@@ -25,6 +25,8 @@ for (var i=3; i<process.argv.length; i++){
 var spotify = require('spotify');
 // request require
 var request = require("request");
+// node library to read/write
+var fs = require("fs");
 
 
 
@@ -240,9 +242,6 @@ function movie(userInput) {
 // =================================================================
 // When run, will access information from the random.txt file. 
 function doWhat() {
-
-    // node library to read/write
-    var fs = require("fs");
 
     // read the random.txt file
     fs.readFile("random.txt", "utf8", function(error, data) {
