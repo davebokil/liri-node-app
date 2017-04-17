@@ -118,14 +118,17 @@ function tweets() {
         console.log('***********************************Program: Twitter Feed************************************')
         console.log("***********************Attention!!! my personal twitter feed sucks.*************************")
         console.log("**********Therefore, I'm defering to the last 20 tweets of my favorite news outlet**********")
-        console.log("***********************Here are the latest tweets from 'The Intercept'**********************")
+        console.log("********************Here are the most recent tweets from 'The Intercept'********************")
         console.log("")
         console.log('============================================================')
+        fs.appendFileSync("log.txt", "Here are the 20 most recent tweets from 'The Intercept':"+ "\n" + "\n" + "\n" )
         for (var i = 0; i < 20; i++) {
 
             console.log("On: " + timeArray[i])
             console.log("The Intercept tweeted: " + tweetArray[i])
             console.log('============================================================')
+            fs.appendFileSync("log.txt", "On: " + timeArray[i])
+            fs.appendFileSync("log.txt", "The Intercept tweeted: " + tweetArray[i]+ "\n" + "\n" + "\n" )
         }
         console.log("")
     });
@@ -147,21 +150,26 @@ function spotifyRun(song) {
         console.log("")
         console.log('*****Program: Spotify Song Information*****')
         console.log("")
+        fs.appendFileSync("log.txt", "Spotify Song Information: " + "\n" + "\n" + "\n" )
 
         // * The song's name
         console.log("The Song you requested is: " + data['tracks'].items[0].name)
+        fs.appendFileSync("log.txt", "The Song you requested is: " + data['tracks'].items[0].name + "\n" )
 
         // * Artist(s)
         console.log("The artist is: " + data['tracks'].items[0].album.artists[0].name)
+        fs.appendFileSync("log.txt", "The artist is: " + data['tracks'].items[0].album.artists[0].name + "\n" )
 
         // * The album that the song is from
         console.log("The album this song came from is: " + data['tracks'].items[0].album.name)
+        fs.appendFileSync("log.txt", "The album this song came from is: " + data['tracks'].items[0].album.name + "\n" )
 
         // * A preview link of the song from Spotify
         console.log("Here's a link to preview " + data['tracks'].items[0].name + ": " + data['tracks'].items[0].preview_url)
         console.log("")
         console.log("*******************************************")
         console.log("")
+        fs.appendFileSync("log.txt", "Here's a link to preview " + data['tracks'].items[0].name + ": " + data['tracks'].items[0].preview_url + "\n" + "\n" + "\n" )
     });
 }
 
@@ -185,19 +193,24 @@ function spotifySign() {
         console.log("** Please retry with the command: spotify-this-song <song title> **")
         console.log("")
         console.log("In the meantime, here's some information about a dope song from the 90s:")
+        fs.appendFileSync("log.txt", "Hey! You forgot to include a song title. But here's some information about a dope song from the 90s: " + "\n" + "\n" + "\n" )
 
         // * The song's name
         console.log("Remember that song " + data['tracks'].items[3].name + "?")
+        fs.appendFileSync("log.txt", "Remember that song " + data['tracks'].items[3].name + "?" + "\n" )
 
         // * Artist(s)
         console.log("It was by the artist " + data['tracks'].items[3].album.artists[0].name)
+        fs.appendFileSync("log.txt", "It was by the artist " + data['tracks'].items[3].album.artists[0].name + "\n" )
 
         // * The album that the song is from
         console.log("It was released on an album called: " + data['tracks'].items[3].album.name)
+        fs.appendFileSync("log.txt", "It was released on an album called: " + data['tracks'].items[3].album.name + "\n" )
 
         // * A preview link of the song from Spotify
         console.log("Here's a link to preview 'The Sign': " + data['tracks'].items[3].preview_url)
         console.log("")
+        fs.appendFileSync("log.txt", "Here's a link to preview 'The Sign': " + data['tracks'].items[3].preview_url + "\n" )
     });
 }
 
@@ -213,24 +226,33 @@ function movie(userInput) {
         if (!error && response.statusCode === 200) {
 
             console.log("")
-                //  * Title of the movie.
+            //  * Title of the movie.
             console.log("Title: " + JSON.parse(body).Title);
+            fs.appendFileSync("log.txt", "\n" + "Title: " + JSON.parse(body).Title + "\n" )
             //  * Year the movie came out.
             console.log("Release Date: " + JSON.parse(body).Released);
+            fs.appendFileSync("log.txt", "Release Date: " + JSON.parse(body).Released + "\n" )
             //  * IMDB Rating of the movie.
             console.log("The movie's IMDB rating is: " + JSON.parse(body).imdbRating);
+            fs.appendFileSync("log.txt", "The movie's IMDB rating is: " + JSON.parse(body).imdbRating + "\n" )
             //  * Country where the movie was produced.
             console.log("Country of Production: " + JSON.parse(body).Country);
+            fs.appendFileSync("log.txt", "Country of Production: " + JSON.parse(body).Country + "\n" )
             //  * Language of the movie.
             console.log("Language: " + JSON.parse(body).Language);
+            fs.appendFileSync("log.txt", "Language: " + JSON.parse(body).Language + "\n" )
             //  * Plot of the movie.
             console.log("The plotline: " + JSON.parse(body).Plot);
+            fs.appendFileSync("log.txt", "The plotline: " + JSON.parse(body).Plot + "\n" )
             //  * Actors in the movie.
             console.log("Starring: " + JSON.parse(body).Actors);
+            fs.appendFileSync("log.txt", "Starring: " + JSON.parse(body).Actors + "\n" )
             //  * Rotten Tomatoes Rating.
             console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
+            fs.appendFileSync("log.txt", "Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value + "\n" )
             //  * Rotten Tomatoes URL.
             console.log("Link to the Rotten Tomatoes page: " + JSON.parse(body).tomatoURL);
+            fs.appendFileSync("log.txt", "Link to the Rotten Tomatoes page: " + JSON.parse(body).tomatoURL + "\n" + "\n" )
             console.log("")
         }
     });
